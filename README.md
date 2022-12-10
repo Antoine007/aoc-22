@@ -18,7 +18,7 @@ Comment out the step you need (1st example, 1st input, 2nd example, 2nd data)
 - Day 6 ✅
 - Day 7 ✅
 - Day 8 ✅
-- Day 9
+- Day 9 ✅
 - Day 10
 - Day 11
 - Day 12
