@@ -27,8 +27,8 @@ Comment out the step you need (1st example, 1st input, 2nd example, 2nd data)
 - Day 15 ✅
 - Day 16 🙅🏻‍♂️ python solution brought in
 - Day 17 ✅ (but too slow)
-- Day 18
-- Day 19
+- Day 18 ⛔ (no time)
+- Day 19 ✅
 - Day 20
 - Day 21
 - Day 22
