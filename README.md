@@ -31,6 +31,6 @@ Comment out the step you need (1st example, 1st input, 2nd example, 2nd data)
 - Day 19 ✅
 - Day 20 ⛔  (works for test cases part 1 & 2 🤷🏻‍♂️)
 - Day 21 ✅ (but too much manual work)
-- Day 22
+- Day 22 🕰️
 - Day 23
 - Day 24
