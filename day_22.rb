@@ -8,7 +8,9 @@ def step1(example = false)
   @x = @grid[0].find_index('.')
   first_move
   move
-  # @grid.each { |a| p a }
+  @grid.each { |a| p a }
+  p @x
+  p @y
   p result
 end
 
@@ -36,9 +38,10 @@ def move
     its = instructions[1..].to_i
     its.times do
       next_spot = calculate_next_spot
+      p next_spot
       break if next_spot[:value] == '#'
 
-      # @grid[@y][@x] = "$"
+      @grid[@y][@x] = "$"
       @x = next_spot[:x]
       @y = next_spot[:y]
     end
@@ -51,7 +54,7 @@ def first_move
     next_spot = calculate_next_spot
     break if next_spot[:value] == '#'
 
-    # @grid[@y][@x] = "$"
+    @grid[@y][@x] = "$"
     @x = next_spot[:x]
     @y = next_spot[:y]
   end
@@ -65,20 +68,25 @@ def calculate_next_spot
   if @cardinal.even? # vertical
     i = @y
     loop do
+      return { value: @grid[i][@x], x: @x, y: i } if ['#', '.'].include?(@grid[i][@x])
+
       i += 1 if @cardinal == 2 # south
       i -= 1 if @cardinal == 4 # north
-      i = 0 if i >= @grid.length || @grid[i][@x] == ' '
-      i = @grid.length - 1 if i.negative? || @grid[i][@x] == ' '
-      return { value: @grid[i][@x], x: @x, y: i } if ['#', '.'].include?(@grid[i][@x])
+      i = 0 if i >= @grid.length || (@grid[i][@x] == ' ' && @cardinal == 2)
+      i = @grid.length - 1 if i.negative? || (@grid[i][@x] == ' ' && @cardinal == 4)
     end
   else
     j = @x
     loop do
-      j += 1 if @cardinal == 1 # east
-      j -= 1 if @cardinal == 4 # west
-      j = 0 if j >= @grid[@y].length || @grid[@y][j] == ' '
-      j = @grid[@y].length - 1 if j.negative? || @grid[@y][j] == ' '
       return { value: @grid[@y][j], x: j, y: @y } if ['#', '.'].include?(@grid[@y][j])
+      if @cardinal == 1 # east
+        j += 1
+        j = 0 if j >= @grid[@y].length || @grid[@y][j] == ' '
+      end
+      if @cardinal == 4 # west
+        j -= 1
+        j = @grid[@y].length - 1 if j.negative? || @grid[@y][j] == ' '
+      end
     end
   end
 end
